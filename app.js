@@ -13,6 +13,7 @@ var session = require('express-session');
 var user = require('./lib/middleware/user');
 var messages = require('./lib/messages');
 var logout = require('./routes/logout');
+var entries = require('./routes/entries');
 
 var app = express();
 
@@ -31,10 +32,11 @@ app.use(session({secret: 'shoutbox'}));
 app.use(user);
 app.use(messages);
 
-app.use('/', routes);
+//app.use('/', routes);
 app.use('/register', register);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/',entries);
 //app.use('/users', users);
 
 // catch 404 and forward to error handler
